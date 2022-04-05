@@ -1,0 +1,40 @@
+body{
+    padding: 10px;
+    margin: 10px;
+}
+.card{
+    border-style: solid;
+    border-color: white;
+}
+.productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+fieldset{
+        background-color: white;
+        padding: 10px;
+        margin: 10px;
+        border:5px solid black;
+}
+fieldset legend{
+    background-color: white;
+    text-align: center;
+    color: black;
+    font-family: "Licorice", cursive;
+    font-weight: bold;
+    font-size: 60px;
+    border: solid black;
+}
+.lineaCarro{
+    border: 5px solid black ;
+}
+.carritoCardBody{
+    color: black;
+    font-weight: bolder;
+}
+.cCBC{
+    color: black;
+    background-color: white;
+}
