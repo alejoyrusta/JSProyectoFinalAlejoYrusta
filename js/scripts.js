@@ -9,7 +9,7 @@ fetch('./json/productos.json')
             <div class="card" id="producto${indice}" style="width: 18rem;">
                 <img src="/multimedia/imagenesProductos/${producto.imagen}" class="card-img-top" alt="${producto.modelo}">
                 <div class="card-body">
-                    <h5 class="card-title">${producto.tipo}</h5>
+                    <h5 class="card-title tipo">${producto.tipo}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item marca">Marca ${producto.marca}</li>
@@ -20,10 +20,11 @@ fetch('./json/productos.json')
                 </ul>
                 <div class="card-body"> 
                     <a class="btn btn-primary" href="/paginas/pago.html" role="button">Comprar</a>
-                    <button class="btn btn-primary" id="boton${indice} type="button">Añadir al carrito</button>
+                    <button class="btn btn-primary agregarAlCarrito" id="${indice} type="button">Añadir al carrito</button>
                 </div>
             </div>
         </div>
         `
     });
 })
+
