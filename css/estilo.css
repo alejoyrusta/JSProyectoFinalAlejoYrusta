@@ -2,11 +2,24 @@ body{
     padding: 10px;
     margin: 10px;
 }
+.miniCarritoImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .miniCarrito{
     color: white;
-    font-weight: bold;
     text-decoration: none;
     list-style: none;
+    font-size: small;
+    margin: 0px;
+    padding: 0px;
+}
+.sacarDelCarritoBTN{
+    list-style: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 #divProductos{
     display: flex;
