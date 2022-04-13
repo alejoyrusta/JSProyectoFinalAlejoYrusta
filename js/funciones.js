@@ -1,14 +1,16 @@
 //↴ Variables.
-const miniCarrito = document.querySelector('#miniCarrito');
+const sacarBTN = document.querySelector ('#miniCarrito')
 const contenedorMiniCarrito = document.querySelector ('#listaMiniCarrito')
 const listaProductos = document.querySelector('#divProductos');
 let productosCarrito = []; //↢ Se va llenando con los productos que agrego al carrito.
 
 //↴ Funciones.
 botones();
-function botones(e){
+function botones(e){//↤ Esta funcion agrupa las funciones relacionadas a los botones.
     listaProductos.addEventListener('click', agregarProducto);
-}//↥ Esta funcion agrupa las funciones relacionadas a los botones.
+    //↥ Esta funcion agrega los productos al carrito cuando apretas el boton agregar al carrito.
+    sacarBTN.addEventListener('click', eliminarProducto);//↤ Elimina productos del carrito.
+}
 
 function agregarProducto(e) {
     e.preventDefault();
@@ -17,6 +19,14 @@ function agregarProducto(e) {
         leerDatosProducto(productoSeleccionado);
     }
 }//↥ Esta funcion agrega los productos al carrito cuando apretas el boton agregar al carrito.
+
+function eliminarProducto(e){//↤ Elimina productos del carrito.
+    if(e.target.classList.contains('sacarDelCarritoBTN')){
+        const productoId = e.target.getAttribute('id')
+        productosCarrito = productosCarrito.filter (producto => producto.id !== productoId);
+        miniCarritoHTML();
+    }
+}
 
 function leerDatosProducto(producto){
     const datosProducto = {//↴ Lee el contenido del producto al que le dimos click y extrae la informacion.
@@ -28,8 +38,22 @@ function leerDatosProducto(producto){
         id: producto.querySelector('button').getAttribute('id'),
         cantidad: 1
     }
-    //↴ Agrega elementos al arreglo del carrito
-    productosCarrito = [...productosCarrito, datosProducto];
+    //↴ Cambia la cantidad del producto en el carrito envez de ponerlo dos veces.
+    const estaEnCarrito = productosCarrito.some (producto => producto.id === datosProducto.id);
+    if(estaEnCarrito) {
+        const prdctos = productosCarrito.map(producto =>{
+            if(producto.id === datosProducto.id){
+                producto.cantidad++;
+                return producto; //↤ Retorna el objeto con la cantidad actualizada.
+            }else{
+                return producto; //↤ Retorna los objetos que no son duplicados.
+            }
+        });
+        productosCarrito = [...prdctos];
+    }else {
+        //↴ Agrega elementos al arreglo del carrito
+        productosCarrito = [...productosCarrito, datosProducto];
+    }
     miniCarritoHTML();
 }
 
